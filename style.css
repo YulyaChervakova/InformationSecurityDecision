@@ -64,3 +64,22 @@ main{
   .table{
       background-color: #fff;
   }
+button {
+    
+    border-radius: 17px;
+   
+    outline: none;
+    font-weight: 300;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    transition: 0.2s;
+}
+
+button:active {
+    background: rgb(145, 179, 252);
+
+}
+
+button {
+    background: rgb(200, 216, 250);
+}
