@@ -84,7 +84,44 @@ button:active {
 button {
     background: rgb(200, 216, 250);
 }
-@media (max-width: 400px) {
+@media (max-width: 520px) {
+    html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+}
+    .conteiner { 
+        display: block;
+        justify-content: flex-start;
+        max-width:500 px;
+        
+    }
+    header {
+        border: 1px inset blue;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    h2{
+        font-size: 20px;  
+    }
+    .main-location{
+        padding: 0px 5%;
+        max-width: 480px;
+    }
+    input {
+        font-size: 14px;
+        width: 170px;
+    }
+    .pin {
+        width: 170px;
+    }
+    p{
+        width:400px;
+    }
+    
+}
+@media (max-width: 450px) {
     html, body {
     /* Убирает прокрутку по горизонтале, для мобильной версии */
     overflow-x: hidden;
@@ -100,10 +137,10 @@ button {
         display: flex;
         height: 50px;
         align-items: center;
-        justify-content: center
+        justify-content: center;
     }
     h2{
-        font-size: 16px;  
+        font-size: 20px;  
     }
     .main-location{
         max-width: 395px;
@@ -122,4 +159,41 @@ button {
     }
     
 }
-
+@media (max-width: 390px) {
+    html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+}
+    .conteiner { 
+        display: block;
+        justify-content: flex-start;
+        max-width:320 px;
+        
+    }
+    header {
+        border: 1px inset blue;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    h2{
+        font-size: 15px;  
+    }
+    .main-location{
+        max-width: 310px;
+        display: block;
+        align-items: center;
+    }
+    input {
+        font-size: 14px;
+        width: 150px;
+    }
+    .pin {
+        width: 150px;
+    }
+    p{
+        width:305px;
+    }
+    
+}
