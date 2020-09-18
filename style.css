@@ -102,6 +102,9 @@ button {
         align-items: center;
         justify-content: center
     }
+    h2{
+        font-size: 16px;  
+    }
     .main-location{
         max-width: 395px;
         display: block;
