@@ -84,3 +84,39 @@ button:active {
 button {
     background: rgb(200, 216, 250);
 }
+@media (max-width: 400px) {
+    html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+}
+    .conteiner { 
+        display: block;
+        justify-content: flex-start;
+        max-width:400 px;
+        
+    }
+    header {
+        border: 1px inset blue;
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: center
+    }
+    .main-location{
+        max-width: 395px;
+        display: block;
+        align-items: center;
+    }
+    input {
+        font-size: 14px;
+        width: 100px;
+    }
+    .pin {
+        width: 200px;
+    }
+    p{
+        width:370px;
+    }
+    
+}
+
