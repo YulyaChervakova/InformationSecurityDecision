@@ -16,7 +16,14 @@ function convert() {
 
   var input = document.getElementById("name").value;
   var input1 = document.getElementById("line").value;
-  document.getElementById("key").innerHTML = input1.slice(0, 4);
+  if (input.length!=8){
+    console.log(input.length);
+    alert("В поле ФИО должно быть 8 символов!");
+  }else{
+    if(input1.length<4) {
+      alert("В поле Ключ должно быть минимум 4 символа! Записанный в тетраде ключ, должен быть равен 32 символам, включай пробелы!!!");
+    }else {
+        document.getElementById("key").innerHTML = input1.slice(0, 4);
   document.getElementById("lo1").innerHTML = input.slice(0, 4);
   document.getElementById("ro1").innerHTML = input.slice(4, 8);
   var outputText = document.getElementsByClassName('lo');
@@ -26,6 +33,9 @@ function convert() {
   tableAscii(input, 0, 4, outputText);
   tableAscii(input, 4, 8, outputText1);
   tableAscii(input1, 0, 4, outputText2);
+
+    }
+  }
 
 }
 
