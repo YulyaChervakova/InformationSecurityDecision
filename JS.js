@@ -16,23 +16,23 @@ function convert() {
 
   var input = document.getElementById("name").value;
   var input1 = document.getElementById("line").value;
-  if (input.length!=8){
+  if (input.length != 8) {
     console.log(input.length);
     alert("В поле ФИО должно быть 8 символов!");
-  }else{
-    if(input1.length<4) {
+  } else {
+    if (input1.length < 4) {
       alert("В поле Ключ должно быть минимум 4 символа! Записанный в тетраде ключ, должен быть равен 32 символам, включай пробелы!!!");
-    }else {
-        document.getElementById("key").innerHTML = input1.slice(0, 4);
-  document.getElementById("lo1").innerHTML = input.slice(0, 4);
-  document.getElementById("ro1").innerHTML = input.slice(4, 8);
-  var outputText = document.getElementsByClassName('lo');
-  var outputText1 = document.getElementsByClassName('ro');
-  var outputText2 = document.getElementsByClassName('xo');
+    } else {
+      document.getElementById("key").innerHTML = input1.slice(0, 4);
+      document.getElementById("lo1").innerHTML = input.slice(0, 4);
+      document.getElementById("ro1").innerHTML = input.slice(4, 8);
+      var outputText = document.getElementsByClassName('lo');
+      var outputText1 = document.getElementsByClassName('ro');
+      var outputText2 = document.getElementsByClassName('xo');
 
-  tableAscii(input, 0, 4, outputText);
-  tableAscii(input, 4, 8, outputText1);
-  tableAscii(input1, 0, 4, outputText2);
+      tableAscii(input, 0, 4, outputText);
+      tableAscii(input, 4, 8, outputText1);
+      tableAscii(input1, 0, 4, outputText2);
 
     }
   }
@@ -75,7 +75,7 @@ function fold() {
       outputText3[i].value = '';
       outputText3[i].value = vivod.slice(0, 4) + ' ' + vivod.slice(4, 8) + ' ' + vivod.slice(8, 12) + ' ' + vivod.slice(12, 16) + ' ' + vivod.slice(16, 20) + ' ' + vivod.slice(20, 24) + ' ' + vivod.slice(24, 28) + ' ' + vivod.slice(28, 32);
     }
-  }else{
+  } else {
     for (var i = 0; i < outputText3.length; i++) {
       outputText3[i].value = '';
       outputText3[i].value = vivod.slice(0, 4) + ' ' + vivod.slice(4, 8) + ' ' + vivod.slice(8, 12) + ' ' + vivod.slice(12, 16) + ' ' + vivod.slice(16, 20) + ' ' + vivod.slice(20, 24) + ' ' + vivod.slice(24, 28) + ' ' + vivod.slice(28, 32);
@@ -89,7 +89,8 @@ function replace() {
   var outputText = document.getElementById('replacement');
   var outputText1 = document.getElementById('replacement2');
   var outputText2 = document.getElementsByClassName('replacement3');
-  var a = 0, b = 4;
+  var a = 0,
+    b = 4;
   var vivod1 = '';
   var vivod2 = '';
   var vivod3 = '';
@@ -103,45 +104,45 @@ function replace() {
       a = a + 5;
       b = b + 5;
       i = i + 5;
-    }else{
+    } else {
       break;
     }
     loop1:
       for (var k = 1; k <= table2.rows.length; k++) {
         var row = table2.rows[k];
         if (num == parseInt(table2.rows[k].cells[0].innerText)) {
-          vivod2 = vivod2 + row.cells[j].innerText+ ' ';
-          vivod3 = vivod3 + parseInt(row.cells[j].innerText)+' ';
+          vivod2 = vivod2 + row.cells[j].innerText + ' ';
+          vivod3 = vivod3 + parseInt(row.cells[j].innerText) + ' ';
           break loop1;
         }
       }
   }
   var count = '';
-  for (var i = 0; i < vivod3.length; i++){
-    if (vivod3[i] != ' ' && vivod3[i+1]!= ' ' ){
-      var c = (vivod3[i])+(vivod3[i+1]);
-      vivod4 = vivod4+parseInt((vivod3[i])+(vivod3[i+1])).toString(2);
-      i=i+2;
-    }else{
-      if (vivod3[i] != ' '){
-        if (parseInt(vivod3[i]).toString(2).length ===4){
-        vivod4 =vivod4 + parseInt(vivod3[i]).toString(2);
-        i=i+1;
-      }else{
-        count = parseInt(vivod3[i]).toString(2);
-        for (var j = (parseInt(vivod3[i]).toString(2)).length; j < 4 ;j++){
-          count = '0'+count;
+  for (var i = 0; i < vivod3.length; i++) {
+    if (vivod3[i] != ' ' && vivod3[i + 1] != ' ') {
+      var c = (vivod3[i]) + (vivod3[i + 1]);
+      vivod4 = vivod4 + parseInt((vivod3[i]) + (vivod3[i + 1])).toString(2);
+      i = i + 2;
+    } else {
+      if (vivod3[i] != ' ') {
+        if (parseInt(vivod3[i]).toString(2).length === 4) {
+          vivod4 = vivod4 + parseInt(vivod3[i]).toString(2);
+          i = i + 1;
+        } else {
+          count = parseInt(vivod3[i]).toString(2);
+          for (var j = (parseInt(vivod3[i]).toString(2)).length; j < 4; j++) {
+            count = '0' + count;
+          }
+          vivod4 = vivod4 + count;
+          i = i + 1;
         }
-        vivod4 =vivod4 + count;
-        i=i+1;
-      }
-      }else if (vivod3[i] === ' '){
+      } else if (vivod3[i] === ' ') {
         break;
       }
     }
   }
   //console.log(vivod3);
- vivdod4 = vivod4.replace(/\s+/g, '');
+  vivdod4 = vivod4.replace(/\s+/g, '');
   outputText.value = '';
   outputText1.value = '';
   outputText.value = vivod1;
@@ -152,33 +153,197 @@ function replace() {
   }
 }
 
-function shift(){
+function shift() {
   var input = document.getElementById('replacement3').value;
   var outputText = document.getElementsByClassName('replacement4');
   var vivod;
   input = input.replace(/\s+/g, '');
-  vivod =input.slice(11,32) + input.slice(0,11);
+  vivod = input.slice(11, 32) + input.slice(0, 11);
   for (var i = 0; i < outputText.length; i++) {
     outputText[i].value = '';
     outputText[i].value = vivod.slice(0, 4) + ' ' + vivod.slice(4, 8) + ' ' + vivod.slice(8, 12) + ' ' + vivod.slice(12, 16) + ' ' + vivod.slice(16, 20) + ' ' + vivod.slice(20, 24) + ' ' + vivod.slice(24, 28) + ' ' + vivod.slice(28, 32);
   }
 }
-function xorCalculate(){
+
+function xorCalculate() {
   var input = document.getElementById('lo').value;
   var input1 = document.getElementById('replacement4').value;
   var outputText7 = document.getElementById('xorOutput');
   outputText = '';
   var vivod = '';
-input = input.replace(/\s+/g, '');
-input1 = input1.replace(/\s+/g, '');
-for (var i = 0; i <input.length ;i++){
-  if ( input[i] ===input1[i]){
- vivod= vivod + '0';
- console.log(vivod);
-  }else{
-    vivod = vivod + '1'
+  input = input.replace(/\s+/g, '');
+  input1 = input1.replace(/\s+/g, '');
+  for (var i = 0; i < input.length; i++) {
+    if (input[i] === input1[i]) {
+      vivod = vivod + '0';
+      console.log(vivod);
+    } else {
+      vivod = vivod + '1'
+    }
+  }
+
+  outputText7.value = vivod;
+}
+
+//List2
+function checkMultiplication() {
+  var inputP = document.getElementById("pInput").value;
+  var inputQ = document.getElementById("qInput").value;
+  var outputTextN = document.getElementsByClassName('nOutput');
+  var n = 0;
+  if (1 <= parseInt(inputP) < 100) {
+    for (var i = 2; i < parseInt(inputP); i++) {
+      var l = parseInt(inputP) % i;
+      if (l == 0) {
+        alert('p - не простое число, введи другое!');
+        break;
+      }
+    }
+    if (1 <= parseInt(inputQ) < 100) {
+      for (var i = 2; i < parseInt(inputQ); i++) {
+        var k = parseInt(inputQ) % i;
+        if (k == 0) {
+          console.log(k);
+          alert('q - не простое число, введи другое!');
+          break;
+        }
+      }
+
+      if (k != 0 && l != 0) {
+        n = parseInt(inputP) * parseInt(inputQ);
+        for (var i = 0; i < outputTextN.length; i++) {
+          outputTextN[i].value = '';
+          outputTextN[i].value = n;
+        }
+      }
+    }
   }
 }
 
-outputText7.value = vivod;
+function eulerFunction() {
+  var inputP = document.getElementById("pInput").value;
+  var inputQ = document.getElementById("qInput").value;
+  var outputTextPhi = document.getElementsByClassName('phiOutput');
+  var m = (parseInt(inputP) - 1) * (parseInt(inputQ) - 1);
+  outputTextPhi[0].value = '';
+  outputTextPhi[0].value = (`(${inputP}-1)*(${inputQ}-1)=${parseInt(inputP)-1}*${parseInt(inputQ)-1}=${(parseInt(inputP)-1)*(parseInt(inputQ)-1)}`);
+  for (var i = 1; i < outputTextPhi.length; i++) {
+    outputTextPhi[i].value = '';
+    outputTextPhi[i].value = m;
+  }
+}
+
+
+
+
+function checkD() {
+  var inputD1 = document.getElementById("dInput1").value;
+  var outputD = document.getElementsByClassName('dInput');
+  var outputTextPhi = document.getElementById('phiOutput').value;
+  if (inputD1 == '') {
+    alert('Значение не заданно!');
+  } else {
+    if (parseInt(inputD1) < parseInt(outputTextPhi)) {
+      var k = 0;
+      for (var i = 2; i <= parseInt(inputD1); i++) {
+        if (parseInt(inputD1) % i == 0 && parseInt(outputTextPhi) % i == 0) {
+          k = 1;
+          alert('d - имеет общие делители с функцией Эйлера !');
+          outputD[0].value = '';
+          outputD[1].value = '';
+          break;
+        }
+      }
+      if (k === 0) {
+        for (var i = 0; i < outputD.length; i++) {
+          outputD[i].value = '';
+          outputD[i].value = parseInt(inputD1);
+        }
+      }
+    }
+  }
+
+}
+
+function checkD2() {
+  // var inputD1 = document.getElementById("dInput1").value;
+  var outputD = document.getElementsByClassName('dInput');
+  var outputTextPhi = document.getElementById('phiOutput').value;
+  var result = 0;
+  var k = 0;
+  outputD[0].value = '';
+  outputD[1].value = '';
+
+  if (parseInt(outputTextPhi) <= 100) {
+
+    while (k != 1) {
+      loop1: {
+        result = randomInteger(2, (parseInt(outputTextPhi) - 1));
+        console.log(result);
+        for (var i = 2; i <= result; i++) {
+          if (result % i == 0 && parseInt(outputTextPhi) % i == 0) {
+            k = 0;
+            break loop1;
+          } else {
+            k = 1;
+          }
+
+        }
+      }
+    }
+  } else {
+    while (k != 1) {
+      loop2: {
+        result = randomInteger(2, 100);
+        console.log(result);
+        for (var i = 2; i <= result; i++) {
+          if (result % i == 0 && parseInt(outputTextPhi) % i == 0) {
+            k = 0;
+            break loop2;
+          } else {
+            k = 1;
+          }
+        }
+      }
+    }
+  }
+
+  for (var i = 0; i < outputD.length; i++) {
+    outputD[i].value = '';
+    outputD[i].value = result;
+  }
+}
+
+
+
+function randomInteger(min, max) {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+function checkE() {
+  var inputD = document.getElementById('dInput2').value;
+  var inputTextPhi = document.getElementById('phiOutput').value;
+  var outputK = document.getElementById('kInput');
+  var outputE = document.getElementsByClassName('eInput');
+  var outputO = document.getElementById('oKey');
+  var outputKKey = document.getElementById('sKey');
+  var outputN = document.getElementById('nOutput').value;
+
+  for (var k = 1; k <= parseInt(inputTextPhi); k++) {
+    var m = ((((parseInt(inputTextPhi)) * k) + 1) % parseInt(inputD));
+    if (m === 0) {
+      for (var i = 0; i < outputE.length; i++) {
+        outputE[i].value = '';
+        outputE[i].value = (((parseInt(inputTextPhi)) * k) + 1) / parseInt(inputD);
+      }
+      outputK.value = '';
+      outputK.value = k;
+      break;
+    }
+  }
+  outputO.value = '';
+  outputO.value = (`${outputE[0].value},${outputN}`);
+  outputKKey.value = '';
+  outputKKey.value = (`${inputD},${outputN}`);;
 }

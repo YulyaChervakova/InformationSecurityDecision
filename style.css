@@ -1,70 +1,140 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
- background-color: rgb(196, 255, 255);
+body {
+    background-color: rgb(196, 255, 255);
 }
-.conteiner{
+
+.conteiner {
+    display: block;
     max-width: 1200px;
     margin: auto;
     background-color: rgb(247, 255, 203);
 }
-header{
-    border:1px inset blue;
+
+header {
+    border: 1px inset blue;
     display: flex;
     height: 70px;
     align-items: center;
     justify-content: center
 }
-.span1{
-    font-weight:bold;
+.textP {
+    text-indent: 20px; 
+       font-size: 17px;
+   }
+.span1 {
+    font-weight: bold;
+}
+
+.main-location {
+    width: 1000px;
+    /* Ширина блока */
+    padding: 10px;
+    /* Поля */
+    margin: auto;
+}
+
+main {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ul.nav {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 0px; /* Значение полей */
+   }
+   .nav{
+    background-color: rgb(95, 0, 21);
+   }
+ul.nav li{
+    display: inline-block; /* Отображать как строчный элемент */
+    text-align: center;
+   
+}
+
+.nav a {
+
+    display: block; /* ссылка растягивается на весь пункт li */
+
+    padding: 10px 20px; /* задаем внутренние отступы */
+
+    color: #fff; /* цвет текста */
+
+    text-decoration: none; /* убрать нижнее подчёркивание у ссылок */
 
 }
-.main-location{
-    width: 1000px; /* Ширина блока */
-    padding: 10px; /* Поля */
-     margin:auto;
+ul.list1 li{
+    font-weight: bold;
 }
-main{
-    display: flex;
-   align-items: center;
-   justify-content: center ;
+.nav a:hover {
+
+    background: #dc9adfda; /* фон пунктов при наведении */
+
 }
 [data-tooltip] {
-    position: relative; /* Относительное позиционирование */ 
-   }
-   [data-tooltip]::after {
-    content: attr(data-tooltip); /* Выводим текст */
-    position: absolute; /* Абсолютное позиционирование */
-    width: 300px; /* Ширина подсказки */
-       border-radius: 10px;
-    left: 0; top: 0; /* Положение подсказки */
-    background: #3989c9; /* Синий цвет фона */
-    color: #fff; /* Цвет текста */
-    padding: 0.5em; /* Поля вокруг текста */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
-    pointer-events: none; /* Подсказка */
-    opacity: 0; /* Подсказка невидима */
-    transition: 1s; /* Время появления подсказки */
-   } 
-   [data-tooltip]:hover::after {
-    opacity: 1; /* Показываем подсказку */
-    top: 2em; /* Положение подсказки */
-   }
-   input {font-size:12px; width:200px;}
-   .pin{
-       width: 500px;
-   }
-   .indent{
+    position: relative;
+    /* Относительное позиционирование */
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    /* Выводим текст */
+    position: absolute;
+    /* Абсолютное позиционирование */
+    width: 300px;
+    border-radius: 10px;
+    /* Ширина подсказки */
+    left: 0;
+    top: 0;
+    /* Положение подсказки */
+    background: #3989c9;
+    /* Синий цвет фона */
+    color: #fff;
+    /* Цвет текста */
+    padding: 0.5em;
+    /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Параметры тени */
+    pointer-events: none;
+    /* Подсказка */
+    opacity: 0;
+    /* Подсказка невидима */
+    transition: 1s;
+
+    /* Время появления подсказки */
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    /* Показываем подсказку */
+    top: 2em;
+    /* Положение подсказки */
+}
+
+input {
+    font-size: 12px;
+    width: 200px;
+}
+
+.pin {
+    width: 500px;
+}
+
+.indent {
     white-space: pre;
-  }
-  .result1{
-      margin-top: 0;
-  }
-  .table{
-      background-color: #fff;
-  }
+}
+
+.result1 {
+    margin-top: 0;
+}
+
+.table {
+    background-color: #fff;
+}
+
 button {
     
     border-radius: 17px;
@@ -83,6 +153,73 @@ button:active {
 
 button {
     background: rgb(200, 216, 250);
+}
+.necessarily{
+   
+    background-color:rgb(248, 168, 255);
+}
+@media (max-width: 990px) {
+
+    
+    header {
+        border: 1px inset blue;
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .main-location{
+        padding: 0px 5%;
+        max-width: 960px;
+        
+    }
+    input {
+        font-size: 14px;
+        width: 400px;
+    }
+    .pin {
+        width: 400px;
+    }
+    p{
+        width:720px;
+    }
+    
+}
+@media (max-width: 760px) {
+    html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+}
+    .conteiner { 
+        display: block;
+        justify-content: flex-start;
+        max-width:740 px;
+        
+    }
+    header {
+        border: 1px inset blue;
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+    }
+   
+    .main-location{
+        padding: 0px 5%;
+        max-width: 730px;
+    }
+    input {
+        font-size: 14px;
+        width: 200px;
+    }
+    .pin {
+        width: 200px;
+    }
+    p{
+        width:500px;
+    }
+    
 }
 @media (max-width: 520px) {
     html, body {

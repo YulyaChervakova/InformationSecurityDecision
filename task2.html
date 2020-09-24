@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalaize.css">
+
+</head>
+
+<body>
+    <div class="conteiner">
+        <header>
+            <h2>«Основы информационной безопасности»</h2>
+        </header>
+        <main>
+            <div id="navbar" class="navigation">
+                <ul class="nav">
+                    <li><a href="index.html">Задание 1</a></li>
+                    <li class="active"><a href="task2.html">Задание 2</a></li>
+
+                </ul>
+            </div>
+            <div class="main-location">
+                <p><span class="span1">Задание №2. </span> Алгоритм шифрования RSA. Сгенерируйте открытый и
+                    закрытый ключи в алгоритме шифрования RSA, выбрав простые числа p и q
+                    из <span class="span1">первой сотни.</span> Зашифруйте сообщение, состоящее из ваших инициалов:
+                    ФИО.</p>
+
+                <span class="span1"> I.Генерация ключей (см. Приложение Г).</span>
+                <a href="javascript:void(0)" onclick="showHide('applicationsG')">Приложение Г</a><br /><br />
+                <div id="applicationsG" style="display: none;">
+                    <p class="textP"><span class="span1">Приложение Г. Алгоритм шифрования RSA</span><br>
+                        Алгоритм шифрования RSA относится к криптографическим системам с
+                        открытым ключом. Криптосистемы с открытым ключом (асимметричные
+                        криптосистемы) были разработаны во второй половине семидесятых годов. В
+                        асимметричных криптосистемах процедуры прямого и обратного
+                        криптопреобразования выполняются на различных ключах и не имеют между
+                        собой очевидных и легко прослеживаемых связей, позволяющих по одному
+                        ключу определить другой. В такой схеме знание только ключа зашифрования
+                        не позволяет расшифровать сообщение, поэтому он не является секретным
+                        элементом шифра и обычно публикуется участником обмена для того, чтобы
+                        любой желающий мог послать ему шифрованное сообщение.</p>
+                    <p class="textP">
+                        <p class="textp">Принцип функционирования асимметричной криптосистемы
+                            заключается в следующем:
+                            <ul class="list1">
+                                <li>
+                                    пользователь А генерирует два ключа - открытый (незасекречен-ный) и
+                                    секретный - и передает открытый ключ по незащищенному каналу
+                                    пользователю Б;</li>
+                                <li>
+                                    пользователь Б шифрует сообщение, используя открытый ключ
+                                    шифрования пользователя А;
+                                <li>
+                                    пользователь Б посылает зашифрованное сообщение пользователю А по
+                                    незащищенному каналу;</li>
+                                <li>
+                                    пользователь А получает зашифрованное сообщение и дешифрует его,
+                                    используя свой секретный ключ.</li>
+                            </ul>
+
+                            <p class="textP">Пары {открытый ключ; секретный ключ} вычисляются с помощью
+                                специальных алгоритмов, причем ни один ключ не может быть выведен из
+                                другого.</p>
+                            <span class='span1'>Криптографическая система RSA (Rivest-Shamir-Adleman)</span>
+                            <p class="textP">Авторами алгоритма RSA, предложенного в 1977 г., являются Р.Риверст
+                                (Rivest), А.Шамир (Shamir) и А.Адлеман (Adleman). Надежность алгоритма
+                                18
+                                основывается на трудности факторизации (разложения на множители)
+                                больших чисел и трудности вычисления дискретных алгоритмов
+                                (нахождения x при известных a, b и n из уравнения a<sup>x</sup>= b (mod n) ).</p>
+                            <p class="textP">
+                                Алгоритм RSA состоит из трех частей: генерации ключей, шифрования
+                                и расшифрования.</p>
+                            <span class='span1'> 1. Генерация ключей.</span>
+                            <p class="textP"> Выберем два больших различных простых числа p и q (Натуральное
+                                число называется простым, если оно делится только на себя и на 1.) и найдем
+                                их произведение</p>
+                            <p class="textP"> n = pq .</p>
+                            <p class="textP"> Вычислим функцию Эйлера &phi;(n) по формуле</p>
+                            <p class="textP"> &phi;(n) = (p-1)(q-1).</p>
+                            <p class="textP"> Закрытый ключ d выбираем из условий</p>
+                            <p class="textP"> d < &phi;(n) и</p> <p class="textP"> d взаимно просто с &phi;(n),</p>
+                            <p class="textP"> т.е. d и &phi;(n) не имеют общих делителей.</p>
+                            <p class="textP"> Открытый ключ e выбираем из условий</p>
+                            <p class="textP"> e < &phi;(n) и</p> <p class="textP"> de = 1(mod &phi;(n)) .</p>
+                            <p class="textP"> Последнее условие означает, что разность de - 1 должна делить-ся на</p>
+                            <p class="textP"> &phi;(n) без остатка. Для определения числа e нужно подобрать такое число
+                                k,что </p>
+
+                            <p class="textP"> d*e - 1 = &phi;(n)*k .</p>
+                            <p class="textP"> В алгоритме RSA</p>
+                            <p class="textP"> ( e, n ) – открытый ключ,</p>
+                            <p class="textP"> ( d, n ) – секретный ключ.</p>
+                            <span class='span1'> 2. Шифрование.</span>
+                            <p class="textP"> Исходное сообщение разбивается на блоки M<sub>i</sub>
+                                одинаковой длины.
+                                Каждый блок представляется в виде большого десятичного числа, меньшего
+                                19
+                                n, и шифруется отдельно. Шифрование блока M (M - десятичное число)
+                                осуществляется по следующей формуле</p>
+                            <span class='span1'>
+                        </p>M<sup>e</sup>= C (mod n) ,</span>
+                        <p class="textP">
+                            где C – шифрблок, соответствующий блоку открытого сообщения M.
+                            Шифрблоки соединяются в шифрограмму.</p>
+                        <span class='span1'> 3. Расшифрование.</span>
+                        <p class="textP">При расшифровании шифрограмма разбивается на блоки известной
+                            длины и каждый шифрблок расшифровывается отдельно по следующей
+                            формуле</p>
+                        <span class='span1'></span>
+                        C<sup>d</sup> = M (mod n) .</span>
+                    </p>
+
+                </div>
+                <p class="textP"
+                    data-tooltip="Натуральное число называется простым, если оно делится только на себя и на 1"> Выберем
+                    два простых числа </p>
+                <span class="span1">p: <input id="pInput " class='pInput necessarily' type="text" size="20" maxlength="2"
+                        placeholder="Ввeсти простое число" required></span><br><br>
+                <span class="span1">q: <input id="qInput " class='qInput necessarily' type="text" size="20" maxlength="2"
+                        placeholder="Ввeсти простое число" required></span>
+                <br>
+                <br>
+                <p class="textP"> Найдем их произведение </p>
+                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" /></span></p>
+                <button onclick="checkMultiplication();">Умножить!</button>
+                <p class="textP"> функция Эйлера
+                    <p class="textP"> &phi;(n) = (p-1)(q-1)</p>
+                    <p class="textP"><span class="span1">&phi;(n): <input class="pin phiOutput" id="phiOutput1"
+                                size="30" /></span></p>
+                    <p class="textP"><span class="span1">&phi;(n):<input class="pin phiOutput" id="phiOutput"
+                                size="30" /></span></p>
+                    <button onclick="eulerFunction();">Вычислить: &phi;(n)! </button>
+                    <p class="textP"> Закрытый ключ d выбираем из условий d &phi;(n) и d взаимно просто с &phi;(n), т.е.
+                        d и &phi;(n) не имеют общих делителей. </p>
+
+                    <p class="textP" data-tooltip="Обрати внимание, d и &phi;(n) не должны иметь общих делителей.">d это
+                        случайное число, ты можешь ввести свое d или попросить программу придумать его за тебя! </p>
+                    <span class="span1">d:<input id="dInput1" class='dInput necessarily' type="text" size="20" maxlength="5"
+                            placeholder="Ввeди свое d" onkeyup="this.value = this.value.replace(/[^\d]/g,'');"> или
+                        <input id="dInput2" class='dInput' type="text" size="20" placeholder="d придумает программа"
+                            readonly></span>
+                </p>
+                <button onclick="checkD();">Проверить свое d </button><span class="span1">или</span>
+                <button onclick="checkD2();">Создать рандомное d </button>
+                <p class="textP">Открытый ключ e выбираем из условий e<&phi;(n) и d*e=1(mod &phi;(n)): e<216,  </p>
+                <p class="textP">Последнее условие означает, что число d*e-1 должно делиться на &phi;(n)
+                    без остатка.</p>
+                <p class="textP">Таким образом, для определения e нужно подобрать такое число k, что</p>
+                <p class="textP"></p>
+                <p class="textP">d*e-1 = &phi;(n)  k</p>
+                <p class="textP"><span class="span1">При k = <input id="kInput" class='kInput' type="text" size="20" ></span></p>
+                <p class="textP"><span class="span1">e = <input id="eInput" class='eInput' type="text" size="20" ></span></p>
+                <button onclick="checkE();">Найти e!</button>
+                <p class="textP">Открытый ключ = <input id="oKey" class='oKey' type="text" size="20" ></p>
+                <p class="textP">Секретный ключ = <input id="sKey" class='oKey' type="text" size="20" ></p>
+ <h2> Задание не закончено      </div>
+        </main>
+
+    </div>
+
+
+    <script src="JS.js"></script>
+</body>
+
+</html>
