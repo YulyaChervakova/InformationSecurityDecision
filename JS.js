@@ -1,3 +1,7 @@
+
+
+
+
 function showHide(element_id) {
   //Если элемент с id-шником element_id существует
   if (document.getElementById(element_id)) {
@@ -14,7 +18,7 @@ function showHide(element_id) {
 
 function convert() {
 
-  var input = document.getElementById("name").value;
+  var D = document.getElementById("name").value;
   var input1 = document.getElementById("line").value;
   if (input.length != 8) {
     console.log(input.length);
@@ -58,7 +62,6 @@ function tableAscii(text, a, b, outputText) {
     outputText[i].value = output;
   }
 
-  // outputText.value = output;
 }
 
 function fold() {
@@ -326,9 +329,10 @@ function checkE() {
   var inputTextPhi = document.getElementById('phiOutput').value;
   var outputK = document.getElementById('kInput');
   var outputE = document.getElementsByClassName('eInput');
-  var outputO = document.getElementById('oKey');
-  var outputKKey = document.getElementById('sKey');
+  var outputO = document.getElementsByClassName('oKey');
+  var outputKKey = document.getElementsByClassName('sKey');
   var outputN = document.getElementById('nOutput').value;
+  var outputSK = document.getElementById('KeySecretOutput');
 
   for (var k = 1; k <= parseInt(inputTextPhi); k++) {
     var m = ((((parseInt(inputTextPhi)) * k) + 1) % parseInt(inputD));
@@ -342,8 +346,145 @@ function checkE() {
       break;
     }
   }
-  outputO.value = '';
-  outputO.value = (`${outputE[0].value},${outputN}`);
-  outputKKey.value = '';
-  outputKKey.value = (`${inputD},${outputN}`);;
+  for (var i = 0; i < outputO.length; i++) {
+    outputO[i].value = '';
+    outputO[i].value= (`${outputE[0].value},${outputN}`);
+  }
+  for (var i = 0; i < outputKKey.length; i++) {
+    outputKKey[i].value = '';
+    outputKKey[i].value = (`${inputD},${outputN}`);
+  }
+  outputSK.value = (`(${inputD},${outputN})`);
+}
+
+function encrypt() {
+  var inputMessege = document.getElementById('sencryptedMessage').value;
+  var outputSencrypted = document.getElementsByClassName('sencryptedMessage1');
+  var table = document.getElementById('table-cipher');
+  var output = '';
+  if (inputMessege.length == 3 && inputMessege[2] !== ' ') {
+    var output = '';
+    for (var i = 0; i < inputMessege.length; i++) {
+      for (var j = 1; j <= table.rows.length; j++) {
+        var row = table.rows[j];
+        if (inputMessege[i] === row.cells[0].innerText) {
+          output = output + row.cells[1].innerText + ' ';
+          break;
+        }
+      }
+    }
+
+    for (var i = 0; i < outputSencrypted.length; i++) {
+      outputSencrypted[i].value = '';
+      outputSencrypted[i].value = output;
+    }
+  } else {
+    if (inputMessege.length == 3) {
+      var output = '';
+      console.log(inputMessege.toUpperCase());
+      if (inputMessege == inputMessege.toUpperCase()) {
+
+        for (var i = 0; i < inputMessege.length; i++) {
+          for (var j = 1; j <= table.rows.length; j++) {
+            var row = table.rows[j];
+            if (inputMessege[i] === row.cells[0].innerText) {
+              if (inputMessege[i] == " ") {
+                output = output + 34 + ' ';
+                break;
+              } else {
+                output = output + row.cells[1].innerText + ' ';
+                break;
+              }
+            }
+          }
+        }
+      }
+      for (var i = 0; i < outputSencrypted.length; i++) {
+        outputSencrypted[i].value = '';
+        outputSencrypted[i].value = output;
+      }
+    } else {
+      alert("Шифр должен состоять из 3 букв или 2 с пробелом");
+    }
+  }
+
+}
+
+function openMessage(){
+  var inputSencrypted = document.getElementById('sencryptedMessage1').value;
+  var inputE = (document.getElementById('eInput').value);
+  var outputN = (document.getElementById('nOutput').value);
+  var outputC1 = document.getElementsByClassName('sencryptedKey1');
+  var outputC2 = document.getElementsByClassName('sencryptedKey2');
+  var outputC3 = document.getElementsByClassName('sencryptedKey3');
+  var outputCRY = document.getElementsByClassName('cryptogramOutput');
+  var outputORi = document.getElementById('originalMessage');
+
+  var number1 = 0;
+  var number2 = 0;
+  var number3 = 0;
+  var k = 0;
+  for (var i = 0;i <= inputSencrypted.length;i++ ){
+    if (inputSencrypted[i]==' '){
+      if(number1 == 0){
+     number1=((inputSencrypted.slice(k,i)).trim());
+     k = i;
+    }else{
+      if(number2 == 0){
+        number2=((inputSencrypted.slice(k+1,i)).trim());
+        k = i;
+        
+       }
+       if(number3 == 0){
+        number3=(inputSencrypted.slice(k,i).trim());
+        k = i;
+       }
+    }
+    }
+    
+  }
+ 
+  
+  for (var i = 0; i < outputC1.length; i++) {
+    outputC1[i].value = '';
+    outputC1[i].value = (BigInt(number1)**BigInt(inputE))%BigInt(outputN);
+  }
+  for (var i = 0; i < outputC2.length; i++) {
+    outputC2[i].value = '';
+    outputC2[i].value =(BigInt(number2)**BigInt(inputE))%BigInt(outputN);
+  }
+  for (var i = 0; i < outputC3.length; i++) {
+    outputC3[i].value = '';
+    outputC3[i].value =(BigInt(number3)**BigInt(inputE))%BigInt(outputN);
+  }
+  outputORi.value =(`(${number1},${number2},${number3})`);
+  outputCRY[0].value= (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
+  outputCRY[1].value= (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
+}
+
+function decipherMessage(){
+  var inputD = document.getElementById('dInput2').value;
+  var outputN = document.getElementById('nOutput').value;
+  var outputC1 = document.getElementById('sencryptedKey1').value;
+  var outputC2 = document.getElementById('sencryptedKey2').value;
+  var outputC3 = document.getElementById('sencryptedKey3').value;
+  var outputM1 = document.getElementById('decrypted1');
+  var outputM2 = document.getElementById('decrypted2');
+  var outputM3 = document.getElementById('decrypted3');
+  var originalMessage = document.getElementById('originalMessage1');
+
+
+
+    outputM1.value = '';
+    outputM1.value = (BigInt(outputC1)**BigInt(inputD))%BigInt(outputN);
+
+
+    outputM2.value = '';
+    outputM2.value =(BigInt(outputC2)**BigInt(inputD))%BigInt(outputN);
+
+
+    outputM3.value = '';
+    outputM3.value =(BigInt(outputC3)**BigInt(inputD))%BigInt(outputN);
+    originalMessage.value = (`(${(outputM1.value)},${outputM2.value},${outputM3.value})`);
+
 }
