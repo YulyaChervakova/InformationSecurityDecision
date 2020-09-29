@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalaize.css">
+
+</head>
+
+<body>
+    <div class="conteiner">
+        <header>
+            <h2>«Основы информационной безопасности»</h2>
+        </header>
+        <main>
+            <div id="navbar" class="navigation">
+                <ul class="nav">
+                    <li><a href="index.html">Задание 1</a></li>
+                    <li><a href="task2.html">Задание 2</a></li>
+                    <li class="active"><a href="task3.html">Задание 3</a></li>
+
+                </ul>
+            </div>
+            <div class="main-location">
+                <p ><span class="span1">Задание №3. </span> Найти хеш–образ своей
+                    Фамилии, используя хеш–функцию H<sub>i</sub>=(H<sub>i-1</sub>+M)<sup>2</sup>mod n, где n = pq, p и q
+                    взять
+                    из Задания №2.</p>
+                <span class="span1" data-tooltip="Ваша фамилия.Исходные данные для зашифрования. Пример:КОЗИНА">
+                    Хешируемое сообщение(ИСПОЛЬЗОВАТЬ ЗАГЛАВНЫЕ БУКВЫ)</span> <br><br>
+
+                <input id="surname" class='surname necessarily' type="text" size="20" maxlength="20"
+                    placeholder="Ввeсти Фамилию"  onkeyup="this.value = this.value.replace(/[0-9' ']/g,'')"><br><br><br>
+                <span class="span1" data-tooltip="p,q задания №2">Два простых числа из задания №2 </span><br>
+                <span class="span1">p: <input id="pInput" class='pInput necessarily' type="text" size="20" maxlength="2"
+                        placeholder="Ввeсти простое число" onkeyup="this.value = this.value.replace(/[^\d]/g,'')"></span><br><br>
+                <span class="span1">q: <input id="qInput" class='qInput necessarily' type="text" size="20" maxlength="2"
+                        placeholder="Ввeсти простое число" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" ></span>
+                <br>
+                <br>
+                <p class="textP"> Найдем их произведение </p>
+                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" /></span></p>
+                <button onclick="checkMultiplication();">Умножить!</button>
+                <p data-tooltip="Пример 8">Вектор инициализации H<sub>0</sub></p>
+                <input class="pin necessarily" id="vector" type="number" size="30" maxlength="3"
+                    placeholder="Выбираем случайным образом" onkeyup="this.value = this.value.replace(/[^\d]/g,'')">
+                <p class="textP"> Фамилию <output class='famili'></output> представить последователь-ностью чисел по номерам букв в алфавите: <output
+                        id="surname1"></output></p>
+                <a href="javascript:void(0)" onclick="showHide('block_id')">Скрыть/Показать таблицу</a><br /><br />
+                <div id="block_id" style="display: none;">
+                    <table class="table table1" id="table-cipher" border="1" width="70%" cellpadding="5">
+                        <tr>
+                            <th>Сим-л</th>
+                            <th>Соответствующее число</th>
+                        </tr>
+                        <tr>
+                            <td>А</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Б</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>В</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Г</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Д</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Е</td>
+                            <td>6</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ё</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>Ж</td>
+                            <td>8</td>
+
+                        <tr>
+                            <td>З</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>И</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Й</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>К</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>Л</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>М</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>Н</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>О</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>П</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>Р</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>С</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>Т</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>У</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td>Ф</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>Х</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>Ц</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td>Ч</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>Ш</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>Щ</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>Ъ</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>Ы</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>Ь</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>Э</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Ю</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>Я</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>а</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>б</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>в</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <td>г</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>д</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>е</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>ё</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>ж</td>
+                            <td>41</td>
+                        </tr>
+                        <tr>
+                            <td>з</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>и</td>
+                            <td>43</td>
+                        </tr>
+                        <tr>
+                            <td>й</td>
+                            <td>44</td>
+                        </tr>
+                        <tr>
+                            <td>к</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>л</td>
+                            <td>46</td>
+                        </tr>
+                        <tr>
+                            <td>м</td>
+                            <td>47</td>
+                        </tr>
+                        <tr>
+                            <td>н</td>
+                            <td>48</td>
+                        </tr>
+                        <tr>
+                            <td>о</td>
+                            <td>49</td>
+                        </tr>
+                        <tr>
+                            <td>п</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>р</td>
+                            <td>51</td>
+                        </tr>
+                        <tr>
+                            <td>с</td>
+                            <td>52</td>
+                        </tr>
+                        <tr>
+                            <td>т</td>
+                            <td>53</td>
+                        </tr>
+                        <tr>
+                            <td>у</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>ф</td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td>ч</td>
+                            <td>56</td>
+                        </tr>
+                        <tr>
+                            <td>ц</td>
+                            <td>57</td>
+                        </tr>
+                        <tr>
+                            <td>ч</td>
+                            <td>58</td>
+                        </tr>
+                        <tr>
+                            <td>ш</td>
+                            <td>59</td>
+                        </tr>
+                        <tr>
+                            <td>щ</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>ъ</td>
+                            <td>61</td>
+                        </tr>
+                        <tr>
+                            <td>ы</td>
+                            <td>62</td>
+                        </tr>
+                        <tr>
+                            <td>ь</td>
+                            <td>63</td>
+                        </tr>
+                        <tr>
+                            <td>э</td>
+                            <td>64</td>
+                        </tr>
+                        <tr>
+                            <td>ю</td>
+                            <td>65</td>
+                        </tr>
+                        <tr>
+                            <td>я</td>
+                            <td>66</td>
+                        </tr>
+                    </table>
+                </div>
+                <button onclick="submitSurname();">Представить!</button><br><br>
+                <input class="pin submitSurname1" id="submitSurname1">
+                <p class="textP">Используя формулу:H<sub>i</sub>=(H<sub>i-1</sub>+M)<sup>2</sup>mod n,<br>
+                    получим хеш-образ сообщения <output class='famili'></output></p>
+                <button onclick="calculateImage();">Вычислить!</button><br><br>
+                <div>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                    <p><span class="span1"><output class="numberH"> </output></Span></p>
+                       
+                </div>
+                 <span class="span1">В итоге получаем хеш-образ сообщения, <output class='famili'></output>, равный  <output id='hash'></output> </span>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="JS.js"></script>
+</body>
+
+</html>

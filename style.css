@@ -232,7 +232,7 @@ button {
     .conteiner { 
         display: block;
         justify-content: flex-start;
-        max-width:500 px;
+        max-width: 97%;
         
     }
     header {

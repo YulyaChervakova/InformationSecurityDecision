@@ -1,7 +1,3 @@
-
-
-
-
 function showHide(element_id) {
   //Если элемент с id-шником element_id существует
   if (document.getElementById(element_id)) {
@@ -18,10 +14,10 @@ function showHide(element_id) {
 
 function convert() {
 
-  var D = document.getElementById("name").value;
+  var input = document.getElementById("name").value;
   var input1 = document.getElementById("line").value;
   if (input.length != 8) {
-    console.log(input.length);
+    
     alert("В поле ФИО должно быть 8 символов!");
   } else {
     if (input1.length < 4) {
@@ -348,7 +344,7 @@ function checkE() {
   }
   for (var i = 0; i < outputO.length; i++) {
     outputO[i].value = '';
-    outputO[i].value= (`${outputE[0].value},${outputN}`);
+    outputO[i].value = (`${outputE[0].value},${outputN}`);
   }
   for (var i = 0; i < outputKKey.length; i++) {
     outputKKey[i].value = '';
@@ -410,7 +406,7 @@ function encrypt() {
 
 }
 
-function openMessage(){
+function openMessage() {
   var inputSencrypted = document.getElementById('sencryptedMessage1').value;
   var inputE = (document.getElementById('eInput').value);
   var outputN = (document.getElementById('nOutput').value);
@@ -424,45 +420,45 @@ function openMessage(){
   var number2 = 0;
   var number3 = 0;
   var k = 0;
-  for (var i = 0;i <= inputSencrypted.length;i++ ){
-    if (inputSencrypted[i]==' '){
-      if(number1 == 0){
-     number1=((inputSencrypted.slice(k,i)).trim());
-     k = i;
-    }else{
-      if(number2 == 0){
-        number2=((inputSencrypted.slice(k+1,i)).trim());
+  for (var i = 0; i <= inputSencrypted.length; i++) {
+    if (inputSencrypted[i] == ' ') {
+      if (number1 == 0) {
+        number1 = ((inputSencrypted.slice(k, i)).trim());
         k = i;
-        
-       }
-       if(number3 == 0){
-        number3=(inputSencrypted.slice(k,i).trim());
-        k = i;
-       }
+      } else {
+        if (number2 == 0) {
+          number2 = ((inputSencrypted.slice(k + 1, i)).trim());
+          k = i;
+
+        }
+        if (number3 == 0) {
+          number3 = (inputSencrypted.slice(k, i).trim());
+          k = i;
+        }
+      }
     }
-    }
-    
+
   }
- 
-  
+
+
   for (var i = 0; i < outputC1.length; i++) {
     outputC1[i].value = '';
-    outputC1[i].value = (BigInt(number1)**BigInt(inputE))%BigInt(outputN);
+    outputC1[i].value = (BigInt(number1) ** BigInt(inputE)) % BigInt(outputN);
   }
   for (var i = 0; i < outputC2.length; i++) {
     outputC2[i].value = '';
-    outputC2[i].value =(BigInt(number2)**BigInt(inputE))%BigInt(outputN);
+    outputC2[i].value = (BigInt(number2) ** BigInt(inputE)) % BigInt(outputN);
   }
   for (var i = 0; i < outputC3.length; i++) {
     outputC3[i].value = '';
-    outputC3[i].value =(BigInt(number3)**BigInt(inputE))%BigInt(outputN);
+    outputC3[i].value = (BigInt(number3) ** BigInt(inputE)) % BigInt(outputN);
   }
-  outputORi.value =(`(${number1},${number2},${number3})`);
-  outputCRY[0].value= (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
-  outputCRY[1].value= (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
+  outputORi.value = (`(${number1},${number2},${number3})`);
+  outputCRY[0].value = (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
+  outputCRY[1].value = (`(${(outputC1[0].value)},${outputC2[0].value},${outputC3[0].value})`);
 }
 
-function decipherMessage(){
+function decipherMessage() {
   var inputD = document.getElementById('dInput2').value;
   var outputN = document.getElementById('nOutput').value;
   var outputC1 = document.getElementById('sencryptedKey1').value;
@@ -475,16 +471,80 @@ function decipherMessage(){
 
 
 
-    outputM1.value = '';
-    outputM1.value = (BigInt(outputC1)**BigInt(inputD))%BigInt(outputN);
+  outputM1.value = '';
+  outputM1.value = (BigInt(outputC1) ** BigInt(inputD)) % BigInt(outputN);
 
 
-    outputM2.value = '';
-    outputM2.value =(BigInt(outputC2)**BigInt(inputD))%BigInt(outputN);
+  outputM2.value = '';
+  outputM2.value = (BigInt(outputC2) ** BigInt(inputD)) % BigInt(outputN);
 
 
-    outputM3.value = '';
-    outputM3.value =(BigInt(outputC3)**BigInt(inputD))%BigInt(outputN);
-    originalMessage.value = (`(${(outputM1.value)},${outputM2.value},${outputM3.value})`);
+  outputM3.value = '';
+  outputM3.value = (BigInt(outputC3) ** BigInt(inputD)) % BigInt(outputN);
+  originalMessage.value = (`(${(outputM1.value)},${outputM2.value},${outputM3.value})`);
 
+}
+
+// Task3 
+//
+//
+function submitSurname() {
+  var inputSurname = document.getElementById('surname').value;
+  var outputSubmitSurname1 = document.getElementsByClassName('submitSurname1');
+  var table = document.getElementById('table-cipher');
+  var output = '';
+  var fam = document.getElementsByClassName('famili');
+  inputSurname = inputSurname.trim();
+
+
+  if (inputSurname.length !== '') {
+    for (var i = 0; i < inputSurname.length; i++) {
+      for (var j = 1; j <= table.rows.length; j++) {
+        var row = table.rows[j];
+        if (inputSurname[i] === row.cells[0].innerText) {
+          output = output + row.cells[1].innerText + ' ';
+          break;
+        }
+      }
+    }
+    for (var i = 0; i < outputSubmitSurname1.length; i++) {
+      outputSubmitSurname1[i].value = '';
+      outputSubmitSurname1[i].value = output;
+    }
+    for (var i = 0; i < fam.length; i++) {
+      fam[i].value = '';
+      fam[i].value = inputSurname;
+    }
+    fam
+  } else {
+    alert("Введите совю фамилию, в первое поле ввода!");
+  }
+}
+
+function calculateImage(){
+  var inputH = document.getElementById('vector').value;
+  var inputn = document.getElementById('nOutput').value;
+  var inputSubmitSurname = document.getElementById('submitSurname1').value;
+  var outputH = document.getElementsByClassName('numberH');
+  var hash = document.getElementById('hash');
+  var j = 0;
+  var k = 0;
+  var number = '';
+  var number1 =inputH;
+  for (var i = 0 ; i<=inputSubmitSurname.length;i++){
+    if (inputSubmitSurname[i] == ' '){
+      number = ((inputSubmitSurname.slice(k, i)).trim());
+        k = i;
+        outputH[j].value = (`H${j+1} =(H${j}+M${j+1})^2mod n =(${number1}+${number})^2mod(${inputn}) = ${((BigInt(number1)+ BigInt(number))**BigInt(2))%BigInt(inputn)}`) ;
+        number1 =((BigInt(number1)+ BigInt(number))**BigInt(2))%BigInt(inputn) ;
+        j++;
+        console.log(j);
+    }
+    hash.value = number1;
+  }
+  for(var i =j;i<outputH.length;i++){
+    outputH[i].value = '';
+  }
+  //hash.value = number1;
+  
 }
