@@ -121,20 +121,22 @@
                     data-tooltip="Натуральное число называется простым, если оно делится только на себя и на 1"> Выберем
                     два простых числа </p>
                 <span class="span1">p: <input id="pInput" class='pInput necessarily' type="text" size="20" maxlength="2"
-                        placeholder="Ввeсти простое число" required></span><br><br>
+                        placeholder="Ввeсти простое число"
+                        onkeyup="this.value = this.value.replace(/[^\d]/g,'');"></span><br><br>
                 <span class="span1">q: <input id="qInput" class='qInput necessarily' type="text" size="20" maxlength="2"
-                        placeholder="Ввeсти простое число" required></span>
+                        placeholder="Ввeсти простое число"
+                        onkeyup="this.value = this.value.replace(/[^\d]/g,'');"></span>
                 <br>
                 <br>
                 <p class="textP"> Найдем их произведение </p>
-                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" /></span></p>
+                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" readonly="" /></span></p>
                 <button onclick="checkMultiplication();">Умножить!</button>
                 <p class="textP"> функция Эйлера
                     <p class="textP"> &phi;(n) = (p-1)(q-1)</p>
                     <p class="textP"><span class="span1">&phi;(n) = <input class="pin phiOutput" id="phiOutput1"
-                                size="30" /></span></p>
+                                size="30" readonly=""></span></p>
                     <p class="textP"><span class="span1">&phi;(n) = <input class="pin phiOutput" id="phiOutput"
-                                size="30" /></span></p>
+                                size="30" readonly=""></span></p>
                     <button onclick="eulerFunction();">Вычислить: &phi;(n)! </button>
                     <p class="textP"> Закрытый ключ d выбираем из условий d &phi;(n) и d взаимно просто с &phi;(n), т.е.
                         d и &phi;(n) не имеют общих делителей. </p>
@@ -145,7 +147,8 @@
                             maxlength="5" placeholder="Ввeди свое d"
                             onkeyup="this.value = this.value.replace(/[^\d]/g,'');"> или
                         <input id="dInput2" class='dInput' type="text" size="20" placeholder="d придумает программа"
-                            readonly></span>
+                            readonly>
+                    </span>
                 </p>
                 <button onclick="checkD();">Проверить свое d </button><span class="span1">или</span>
                 <button onclick="checkD2();">Создать рандомное d </button>
@@ -155,319 +158,332 @@
                 <p class="textP">Таким образом, для определения e нужно подобрать такое число k, что</p>
                 <p class="textP"></p>
                 <p class="textP">d*e-1 = &phi;(n) k</p>
-                <p class="textP"><span class="span1">При k = <input id="kInput" class='kInput' type="text"
-                            size="20"></span></p>
-                <p class="textP"><span class="span1">e = <input id="eInput" class='eInput' type="text" size="20"></span>
+                <p class="textP"><span class="span1">При k = <input id="kInput" class='kInput' type="text" size="20"
+                            readonly=""></span></p>
+                <p class="textP"><span class="span1">e = <input id="eInput" class='eInput' type="text" size="20"
+                            readonly=""></span>
                 </p>
                 <button onclick="checkE();">Найти e!</button>
-                <p class="textP">Открытый ключ = <input id="oKey" class='oKey' type="text" size="20"></p>
-                <p class="textP">Секретный ключ = <input id="sKey" class='sKey' type="text" size="20"></p>
-                
+                <p class="textP">Открытый ключ = <input id="oKey" class='oKey' type="text" size="20" readonly=""></p>
+                <p class="textP">Секретный ключ = <input id="sKey" class='sKey' type="text" size="20" readonly=""></p>
+
                 <span class="span1"> II. Шифрование.</span>
-                <p class="textP"> <span class="span1" data-tooltip="Пример шифруемого сообщения «КГЛ» как последовательность
-                    целых чисел. Пусть буква «К» соответствует числу 12, буква «Г» - числу 4 и
-                    буква «Л» - числу 13. "> Шифруемое сообщение </span></p>
-                <a href="javascript:void(0)" onclick="showHide('block_id')">Скрыть/Показать таблицу</a><br /><br />
-                <div id="block_id" style="display: none;">
-                    <table class="table table1" id="table-cipher" border="1" width="70%" cellpadding="5">
-                        <tr>
-                            <th>Сим-л</th>
-                            <th>Соответствующее число</th>
-                        </tr>
-                        <tr>
-                            <td>А</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>Б</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>В</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>Г</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>Д</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>Е</td>
-                            <td>6</td>
-                        </tr>
-
-                        <tr>
-                            <td>Ё</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>Ж</td>
-                            <td>8</td>
-
-                        <tr>
-                            <td>З</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td>И</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>Й</td>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <td>К</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>Л</td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>М</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>Н</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>О</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <td>П</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Р</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td>С</td>
-                            <td>19</td>
-                        </tr>
-                        <tr>
-                            <td>Т</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>У</td>
-                            <td>21</td>
-                        </tr>
-                        <tr>
-                            <td>Ф</td>
-                            <td>22</td>
-                        </tr>
-                        <tr>
-                            <td>Х</td>
-                            <td>23</td>
-                        </tr>
-                        <tr>
-                            <td>Ц</td>
-                            <td>24</td>
-                        </tr>
-                        <tr>
-                            <td>Ч</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>Ш</td>
-                            <td>26</td>
-                        </tr>
-                        <tr>
-                            <td>Щ</td>
-                            <td>27</td>
-                        </tr>
-                        <tr>
-                            <td>Ъ</td>
-                            <td>28</td>
-                        </tr>
-                        <tr>
-                            <td>Ы</td>
-                            <td>29</td>
-                        </tr>
-                        <tr>
-                            <td>Ь</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Э</td>
-                            <td>31</td>
-                        </tr>
-                        <tr>
-                            <td>Ю</td>
-                            <td>32</td>
-                        </tr>
-                        <tr>
-                            <td>Я</td>
-                            <td>33</td>
-                        </tr>
-                        <tr>
-                            <td>а</td>
-                            <td>34</td>
-                        </tr>
-                        <tr>
-                            <td>б</td>
-                            <td>35</td>
-                        </tr>
-                        <tr>
-                            <td>в</td>
-                            <td>36</td>
-                        </tr>
-                        <tr>
-                            <td>г</td>
-                            <td>37</td>
-                        </tr>
-                        <tr>
-                            <td>д</td>
-                            <td>38</td>
-                        </tr>
-                        <tr>
-                            <td>е</td>
-                            <td>39</td>
-                        </tr>
-                        <tr>
-                            <td>ё</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>ж</td>
-                            <td>41</td>
-                        </tr>
-                        <tr>
-                            <td>з</td>
-                            <td>42</td>
-                        </tr>
-                        <tr>
-                            <td>и</td>
-                            <td>43</td>
-                        </tr>
-                        <tr>
-                            <td>й</td>
-                            <td>44</td>
-                        </tr>
-                        <tr>
-                            <td>к</td>
-                            <td>45</td>
-                        </tr>
-                        <tr>
-                            <td>л</td>
-                            <td>46</td>
-                        </tr>
-                        <tr>
-                            <td>м</td>
-                            <td>47</td>
-                        </tr>
-                        <tr>
-                            <td>н</td>
-                            <td>48</td>
-                        </tr>
-                        <tr>
-                            <td>о</td>
-                            <td>49</td>
-                        </tr>
-                        <tr>
-                            <td>п</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>р</td>
-                            <td>51</td>
-                        </tr>
-                        <tr>
-                            <td>с</td>
-                            <td>52</td>
-                        </tr>
-                        <tr>
-                            <td>т</td>
-                            <td>53</td>
-                        </tr>
-                        <tr>
-                            <td>у</td>
-                            <td>54</td>
-                        </tr>
-                        <tr>
-                            <td>ф</td>
-                            <td>55</td>
-                        </tr>
-                        <tr>
-                            <td>ч</td>
-                            <td>56</td>
-                        </tr>
-                        <tr>
-                            <td>ц</td>
-                            <td>57</td>
-                        </tr>
-                        <tr>
-                            <td>ч</td>
-                            <td>58</td>
-                        </tr>
-                        <tr>
-                            <td>ш</td>
-                            <td>59</td>
-                        </tr>
-                        <tr>
-                            <td>щ</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>ъ</td>
-                            <td>61</td>
-                        </tr>
-                        <tr>
-                            <td>ы</td>
-                            <td>62</td>
-                        </tr>
-                        <tr>
-                            <td>ь</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>э</td>
-                            <td>64</td>
-                        </tr>
-                        <tr>
-                            <td>ю</td>
-                            <td>65</td>
-                        </tr>
-                        <tr>
-                            <td>я</td>
-                            <td>66</td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td>67</td>
-                        </tr>
-                    </table>
-                </div>
-                <p class="textP" data-tooltip='Зашифруйте сообщение, состоящее из ваших инициалов:
-                ФИО.'>Шифр:<input id="sencryptedMessage" class='sencryptedMessage necessarily' type="text" size="3">
+                <p data-tooltip="Пример шифруемого сообщения «КГЛ» как последовательность
+                целых чисел. Пусть буква «К» соответствует числу 12, буква «Г» - числу 4 и
+                буква «Л» - числу 13. "class="textP"> <span class="span1" > Шифруемое сообщение </span>
                 </p>
-                <p class="textP">Представление:<input id="sencryptedMessage1" class='sencryptedMessage1' type="text"
-                        size="3"></p>
-                <button onclick="encrypt();">Представление сообщения!</button>
+                <div>
+                    <a href="javascript:void(0)" onclick="showHide('block_id')">Скрыть/Показать таблицу</a><br /><br />
+                    <div id="block_id" style="display: none;">
+                        <table class="table table1" id="table-cipher" border="1" width="70%" cellpadding="5">
+                            <tr>
+                                <th>Сим-л</th>
+                                <th>Соответствующее число</th>
+                            </tr>
+                            <tr>
+                                <td>А</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Б</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>В</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Г</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>Д</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Е</td>
+                                <td>6</td>
+                            </tr>
+
+                            <tr>
+                                <td>Ё</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Ж</td>
+                                <td>8</td>
+
+                            <tr>
+                                <td>З</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>И</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Й</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>К</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>Л</td>
+                                <td>13</td>
+                            </tr>
+                            <tr>
+                                <td>М</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>Н</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>О</td>
+                                <td>16</td>
+                            </tr>
+                            <tr>
+                                <td>П</td>
+                                <td>17</td>
+                            </tr>
+                            <tr>
+                                <td>Р</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>С</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td>Т</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>У</td>
+                                <td>21</td>
+                            </tr>
+                            <tr>
+                                <td>Ф</td>
+                                <td>22</td>
+                            </tr>
+                            <tr>
+                                <td>Х</td>
+                                <td>23</td>
+                            </tr>
+                            <tr>
+                                <td>Ц</td>
+                                <td>24</td>
+                            </tr>
+                            <tr>
+                                <td>Ч</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>Ш</td>
+                                <td>26</td>
+                            </tr>
+                            <tr>
+                                <td>Щ</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>Ъ</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td>Ы</td>
+                                <td>29</td>
+                            </tr>
+                            <tr>
+                                <td>Ь</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <td>Э</td>
+                                <td>31</td>
+                            </tr>
+                            <tr>
+                                <td>Ю</td>
+                                <td>32</td>
+                            </tr>
+                            <tr>
+                                <td>Я</td>
+                                <td>33</td>
+                            </tr>
+                            <tr>
+                                <td>а</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>б</td>
+                                <td>35</td>
+                            </tr>
+                            <tr>
+                                <td>в</td>
+                                <td>36</td>
+                            </tr>
+                            <tr>
+                                <td>г</td>
+                                <td>37</td>
+                            </tr>
+                            <tr>
+                                <td>д</td>
+                                <td>38</td>
+                            </tr>
+                            <tr>
+                                <td>е</td>
+                                <td>39</td>
+                            </tr>
+                            <tr>
+                                <td>ё</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>ж</td>
+                                <td>41</td>
+                            </tr>
+                            <tr>
+                                <td>з</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>и</td>
+                                <td>43</td>
+                            </tr>
+                            <tr>
+                                <td>й</td>
+                                <td>44</td>
+                            </tr>
+                            <tr>
+                                <td>к</td>
+                                <td>45</td>
+                            </tr>
+                            <tr>
+                                <td>л</td>
+                                <td>46</td>
+                            </tr>
+                            <tr>
+                                <td>м</td>
+                                <td>47</td>
+                            </tr>
+                            <tr>
+                                <td>н</td>
+                                <td>48</td>
+                            </tr>
+                            <tr>
+                                <td>о</td>
+                                <td>49</td>
+                            </tr>
+                            <tr>
+                                <td>п</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>р</td>
+                                <td>51</td>
+                            </tr>
+                            <tr>
+                                <td>с</td>
+                                <td>52</td>
+                            </tr>
+                            <tr>
+                                <td>т</td>
+                                <td>53</td>
+                            </tr>
+                            <tr>
+                                <td>у</td>
+                                <td>54</td>
+                            </tr>
+                            <tr>
+                                <td>ф</td>
+                                <td>55</td>
+                            </tr>
+                            <tr>
+                                <td>ч</td>
+                                <td>56</td>
+                            </tr>
+                            <tr>
+                                <td>ц</td>
+                                <td>57</td>
+                            </tr>
+                            <tr>
+                                <td>ч</td>
+                                <td>58</td>
+                            </tr>
+                            <tr>
+                                <td>ш</td>
+                                <td>59</td>
+                            </tr>
+                            <tr>
+                                <td>щ</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>ъ</td>
+                                <td>61</td>
+                            </tr>
+                            <tr>
+                                <td>ы</td>
+                                <td>62</td>
+                            </tr>
+                            <tr>
+                                <td>ь</td>
+                                <td>63</td>
+                            </tr>
+                            <tr>
+                                <td>э</td>
+                                <td>64</td>
+                            </tr>
+                            <tr>
+                                <td>ю</td>
+                                <td>65</td>
+                            </tr>
+                            <tr>
+                                <td>я</td>
+                                <td>66</td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td>67</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <p class="textP" data-tooltip='Зашифруйте сообщение, состоящее из ваших инициалов:
+                    ФИО.'>Шифр:<input id="sencryptedMessage" class='sencryptedMessage necessarily' type="text" size="3">
+                    </p>
+
+                    <p class="textP">Представление:<input id="sencryptedMessage1" class='sencryptedMessage1' type="text"
+                            size="3" readonly=""></p>
+                    <button onclick="encrypt();">Представление сообщения!</button>
+                </div>
                 <p class="textP">Зашифруем сообщение, используя открытый ключ: <input class='oKey' type="text"
                         size="20"></p>
                 <p class="textP">M<sup>e</sup>= C (mod n)</p>
-                <p class="textP">С1 = <output class="vivodC" ></output><input id="sencryptedKey1" class='sencryptedKey1' type="text" size="3"></p>
-                <p class="textP">С2 = <output class="vivodC" ></output><input id="sencryptedKey2" class='sencryptedKey2' type="text" size="3"></p>
-                <p class="textP">С3 = <output class="vivodC" ></output><input id="sencryptedKey3" class='sencryptedKey3' type="text" size="3"></p>
+                <p class="textP">С1 = <output class="vivodC"></output><input id="sencryptedKey1" class='sencryptedKey1'
+                        type="text" size="3" readonly=""></p>
+                <p class="textP">С2 = <output class="vivodC"></output><input id="sencryptedKey2" class='sencryptedKey2'
+                        type="text" size="3" readonly=""></p>
+                <p class="textP">С3 = <output class="vivodC"></output><input id="sencryptedKey3" class='sencryptedKey3'
+                        type="text" size="3" readonly=""></p>
                 <button onclick="openMessage();">Шифрровать сообщение!</button>
                 <p class="textP"></p>
                 <p class="textP">Таким образом, исходному сообщению <output id="originalMessage"></output> соответствует
                     криптограмма <output class="cryptogramOutput"></output>.</p>
                 <span class="span1">III. Расшифрование</span>
-                <p class="textP">Расшифруем сообщение <output class="cryptogramOutput"></output>, пользуясь секретным ключом <output id="KeySecretOutput"></output></p>
-                <p class="textP">M1 = <output class="vivodM" ></output><input id="decrypted1" class='decrypted1' type="text" size="3"></p>
-                <p class="textP">M2 = <output class="vivodM" ></output><input id="decrypted2" class='decrypted2' type="text" size="3"></p>
-                <p class="textP">M3 = <output class="vivodM" ></output><input id="decrypted3" class='decrypted3' type="text" size="3"></p>
+                <p class="textP">Расшифруем сообщение <output class="cryptogramOutput"></output>, пользуясь секретным
+                    ключом <output id="KeySecretOutput"></output></p>
+                <p class="textP">M1 = <output class="vivodM"></output><input id="decrypted1" class='decrypted1'
+                        type="text" size="3" readonly=""></p>
+                <p class="textP">M2 = <output class="vivodM"></output><input id="decrypted2" class='decrypted2'
+                        type="text" size="3" readonly=""></p>
+                <p class="textP">M3 = <output class="vivodM"></output><input id="decrypted3" class='decrypted3'
+                        type="text" size="3" readonly=""></p>
                 <button onclick="decipherMessage();">Расшифрования!</button>
-                <p class="textP">  <span class="span1"> В результате расшифрования было получено исходное сообщение <output id="originalMessage1"></output></span></p>
+                <p class="textP"> <span class="span1"> В результате расшифрования было получено исходное сообщение
+                        <output id="originalMessage1"></output></span></p>
 
             </div>
         </main>
