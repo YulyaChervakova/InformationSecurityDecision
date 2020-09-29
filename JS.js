@@ -415,7 +415,7 @@ function openMessage() {
   var outputC3 = document.getElementsByClassName('sencryptedKey3');
   var outputCRY = document.getElementsByClassName('cryptogramOutput');
   var outputORi = document.getElementById('originalMessage');
-
+  var vivodC = document.getElementsByClassName('vivodC');
   var number1 = 0;
   var number2 = 0;
   var number3 = 0;
@@ -439,9 +439,11 @@ function openMessage() {
     }
 
   }
-
-
+  vivodC[0].value = (`(${number1}^${inputE}) mod ${outputN} =`);
+  vivodC[1].value = (`(${number2}^${inputE}) mod ${outputN}=`);
+  vivodC[2].value =(`(${number3}^${inputE}) mod ${outputN}=`);
   for (var i = 0; i < outputC1.length; i++) {
+
     outputC1[i].value = '';
     outputC1[i].value = (BigInt(number1) ** BigInt(inputE)) % BigInt(outputN);
   }
@@ -468,8 +470,11 @@ function decipherMessage() {
   var outputM2 = document.getElementById('decrypted2');
   var outputM3 = document.getElementById('decrypted3');
   var originalMessage = document.getElementById('originalMessage1');
+  var vivodM = document.getElementsByClassName('vivodM');
 
-
+  vivodM[0].value = (`(${outputC1}^${inputD}) mod ${outputN} =`);
+  vivodM[1].value = (`(${outputC2}^${inputD}) mod ${outputN}=`);
+  vivodM[2].value = (`(${outputC3}^${inputD}) mod ${outputN}=`);
 
   outputM1.value = '';
   outputM1.value = (BigInt(outputC1) ** BigInt(inputD)) % BigInt(outputN);
