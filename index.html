@@ -5,7 +5,7 @@
     <!— Yandex.Metrika counter —> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(67847740, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/67847740" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!— /Yandex.Metrika counter —>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
-    <title>Document</title>
+    <title>ОИБ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalaize.css">
 
@@ -40,12 +40,12 @@
                         букв из своих данных:
                         Фамилии Имени Отчества </b>(Исходные данные для зашифрования)<b>:</b><br>
                 </p>
-                <input id="name" class="necessarily" type="text" size="20" maxlength="8" placeholder="Ввод кириллицей" required>
+                <input id="name" class="necessarily" type="text" size="20" maxlength="8" placeholder="Ввод кириллицей" onkeyup="this.value = this.value.replace(/[^а-яА-я]/g,'');" >
                 <br>
                 <p data-tooltip="Пример: АЛИНа пошла в лес собирать грибы "><b>Введите текст, состоящий из 32
                         символов.</b>(Ключ)<b>:</b><br>
                 </p>
-                <input id="line" class="necessarily" type="text" size="20" maxlength="32" placeholder="Ввод кириллицей">
+                <input id="line" class="necessarily" type="text" size="20" maxlength="32" placeholder="Ввод кириллицей" onkeyup="this.value = this.value.replace(/[^а-яА-я' ']/g,'');">
                 <p> <span class="span1">Для первого подключа Х используем первые 4 буквы ключа: </span>
                     <br>
                     Переводим исходный текст и первый подключ в двоичную
@@ -321,23 +321,22 @@
                         </tr>
                     </table>
                 </div>
-                <p>L0: <input class="pin lo" id="lo" size="30" /> <span class="span1" id="lo1"> </span> </p>
-                <p>R0: <input class="pin ro" id="ro" size="30" /> <span class="span1" id="ro1"></span> </p>
-                <p>Х0: <input class="pin xo" id="xo" size="30" /> <span class="span1" id="key"></span></p>
+                <p>L0: <input class="pin lo" id="lo" size="30"  readonly /> <span class="span1" id="lo1" > </span> </p>
+                <p>R0: <input class="pin ro" id="ro" size="30" readonly /> <span class="span1" id="ro1"></span> </p>
+                <p>Х0: <input class="pin xo" id="xo" size="30" readonly/> <span class="span1" id="key"></span></p>
                 <button onclick="convert();">Перевод!</button>
                 <p>
                     <span class="span1">I. Найдем значение функции преобразования f(R0,X0)</span><br>
                     <span class="span1"> 1). </span>Вычисление суммы R0 и X0 по mod 2<sup>32</sup>
 
                 </p>
-                <p>R0: <input class="pin ro" size="30""/> </p>
-                <p>Х0: <input class=" pin xo" size="30" /></p>
+                <p>R0: <input class="pin ro" size="30"readonly/> </p>
+                <p>Х0: <input class=" pin xo" size="30"readonly /></p>
                 <button onclick="fold();">Cложить!</button>
-                <p>R0+X0: <input class="pin result" id='result' size="30" /></p>
+                <p>R0+X0: <input class="pin result" id='result' size="30" readonly/></p>
                 <p> <span class="span1"> 1). Преобразование в блоке подстановки
-                        Результат суммирования R0+X0 по mod 2
-                        32</span></p>
-                <p>R0+X0: <input class="pin result" size="30" /></p>
+                        Результат суммирования R0+X0 по mod 2<sup>32</sup></span></p>
+                <p>R0+X0: <input class="pin result" size="30" readonly/></p>
                 <p> Преобразуем в блоке подстановки (см. Таблица 2). Для каждого 4-
                     битного блока вычислим его адрес в таблице подстановки. Номер блока
                     соответствует номеру столбца, десятичное значение блока соответствует
@@ -537,23 +536,23 @@
                         </tr>
                     </table>
                 </div>
-                <p> <span class="span1 indent"> 8 7 6 5 4 3 2 1</span></p>
-                <p>R0+X0: <input class="pin result" id='result1' size="30" /></p>
+                <p> <span class="span1 indent numberTR"></span></p>
+                <p>R0+X0: <input id='result1' class="pin result "  size="30" readonly/></p>
                 <button onclick="replace();">Заменить!</button>
-                <p>Десятичное значение : <input class="pin replacement" id="replacement" size="30" /></p>
-                <p>Десятичное по таблице: <input class="pin replacement2" id="replacement2" size="30" /></p>
-                <p>Итоговое двоичное зн.: <input class="pin replacement3" id="replacement3" size="30" /></p>
+                <p>Десятичное значение : <input class="pin replacement" id="replacement" size="30" readonly /></p>
+                <p>Десятичное по таблице: <input class="pin replacement2" id="replacement2" size="30" readonly/></p>
+                <p>Итоговое двоичное зн.: <input class="pin replacement3" id="replacement3" size="30" readonly/></p>
                 <span class="span1"> 3). Циклический сдвиг результата п.2 на 11 бит влево </span>
-                <p>Итоговое двоичное зн.: <input class="pin replacement3" size="30" /></p>
+                <p>Итоговое двоичное зн.: <input class="pin replacement3" size="30" readonly/></p>
                 <button onclick="shift();">Заменить!</button>
-                <p>Сдвиг на 11. f (R0,X0) : <input class="pin replacement4" id="replacement4" size="30" /></p>
+                <p>Сдвиг на 11. f (R0,X0) : <input class="pin replacement4" id="replacement4" size="30" readonly /></p>
 
                 <span class="span1">II. Вычисляем R1= f(R0,X0) XOR L0.</span>
                 <p>Результат преобразования функции f(R0,X0) складываем с L0 по mod2:</p>
-                <p>L0: <input class="pin lo" size="30" /> <span class="span1" id="lo1"> </span> </p>
-                <p>f (R0,X0) : <input class="pin replacement4" size="30" /></p>
+                <p>L0: <input class="pin lo" size="30"readonly /> <span class="span1" id="lo1" readonly> </span> </p>
+                <p>f (R0,X0) : <input class="pin replacement4" size="30" readonly/></p>
                 <button onclick="xorCalculate();">Вычислить XOR!</button>
-                <p>R1 : <input class="pin " id="xorOutput" size="30" /></p>
+                <p>R1 : <input class="pin " id="xorOutput" size="30" readonly/></p>
             </div>
 
         </main>

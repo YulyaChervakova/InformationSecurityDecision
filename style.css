@@ -20,10 +20,12 @@ header {
     align-items: center;
     justify-content: center
 }
+
 .textP {
-    text-indent: 20px; 
-       font-size: 17px;
-   }
+    text-indent: 20px;
+    font-size: 17px;
+}
+
 .span1 {
     font-weight: bold;
 }
@@ -42,38 +44,52 @@ main {
     align-items: center;
     justify-content: center;
 }
+
 ul.nav {
-    margin: 0; /* Обнуляем значение отступов */
-    padding: 0px; /* Значение полей */
-   }
-   .nav{
+    margin: 0;
+    /* Обнуляем значение отступов */
+    padding: 0px;
+    /* Значение полей */
+}
+
+.nav {
     background-color: rgb(95, 0, 21);
-   }
-ul.nav li{
-    display: inline-block; /* Отображать как строчный элемент */
+}
+
+ul.nav li {
+    display: inline-block;
+    /* Отображать как строчный элемент */
     text-align: center;
-   
+
 }
 
 .nav a {
 
-    display: block; /* ссылка растягивается на весь пункт li */
+    display: block;
+    /* ссылка растягивается на весь пункт li */
 
-    padding: 10px 20px; /* задаем внутренние отступы */
+    padding: 10px 20px;
+    /* задаем внутренние отступы */
 
-    color: #fff; /* цвет текста */
+    color: #fff;
+    /* цвет текста */
 
-    text-decoration: none; /* убрать нижнее подчёркивание у ссылок */
+    text-decoration: none;
+    /* убрать нижнее подчёркивание у ссылок */
 
 }
-ul.list1 li{
+
+ul.list1 li {
     font-weight: bold;
 }
+
 .nav a:hover {
 
-    background: #dc9adfda; /* фон пунктов при наведении */
+    background: #dc9adfda;
+    /* фон пунктов при наведении */
 
 }
+
 [data-tooltip] {
     position: relative;
     /* Относительное позиционирование */
@@ -103,7 +119,7 @@ ul.list1 li{
     opacity: 0;
     /* Подсказка невидима */
     transition: 1s;
-
+    z-index: 1;
     /* Время появления подсказки */
 }
 
@@ -136,9 +152,9 @@ input {
 }
 
 button {
-    
+
     border-radius: 17px;
-   
+
     outline: none;
     font-weight: 300;
     text-decoration: none;
@@ -154,16 +170,23 @@ button:active {
 button {
     background: rgb(200, 216, 250);
 }
-.necessarily{
-   
-    background-color:rgb(249, 198, 253);
+
+.necessarily {
+
+    background-color: rgb(249, 198, 253);
 }
+
+.numberTR::before {
+    content: "                8       7        6        5        4        3      2      1";
+}
+
 @media (max-width: 990px) {
 
-    .conteiner{
+    .conteiner {
         max-height: 100%;
         max-width: 97%;
     }
+
     header {
         border: 1px inset blue;
         display: flex;
@@ -171,35 +194,46 @@ button {
         align-items: center;
         justify-content: center;
     }
-    
-    .main-location{
+
+    .main-location {
         padding: 5%;
         max-width: 960px;
-        
+
     }
+
     input {
         font-size: 14px;
         width: 400px;
     }
+
     .pin {
         width: 400px;
     }
-    p{
-        width:720px;
+
+    p {
+        width: 720px;
     }
-    
+    .numberTR::before {
+        content: "               8        7        6        5       4       3      2      1";
+    }
+
 }
+
 @media (max-width: 760px) {
-    html, body {
-    /* Убирает прокрутку по горизонтале, для мобильной версии */
-    overflow-x: hidden;
-}
-    .conteiner { 
+
+    html,
+    body {
+        /* Убирает прокрутку по горизонтале, для мобильной версии */
+        overflow-x: hidden;
+    }
+
+    .conteiner {
         display: block;
         justify-content: flex-start;
         max-width: 97%;
-        
+
     }
+
     header {
         border: 1px inset blue;
         display: flex;
@@ -207,34 +241,42 @@ button {
         align-items: center;
         justify-content: center;
     }
-   
-    .main-location{
-        padding:  5%;
+
+    .main-location {
+        padding: 5%;
         max-width: 730px;
     }
+
     input {
         font-size: 14px;
         width: 200px;
     }
-    .pin {
-        width: 200px;
-    }
-    p{
-        width:500px;
-    }
     
+    .pin {
+        width: 400px;
+    }
+
+    p {
+        width: 500px;
+    }
+
 }
+
 @media (max-width: 520px) {
-    html, body {
-    /* Убирает прокрутку по горизонтале, для мобильной версии */
-    overflow-x: hidden;
-}
-    .conteiner { 
+
+    html,
+    body {
+        /* Убирает прокрутку по горизонтале, для мобильной версии */
+        overflow-x: hidden;
+    }
+
+    .conteiner {
         display: block;
         justify-content: flex-start;
         max-width: 97%;
-        
+
     }
+
     header {
         border: 1px inset blue;
         display: flex;
@@ -242,36 +284,47 @@ button {
         align-items: center;
         justify-content: center;
     }
-    h2{
-        font-size: 20px;  
+
+    h2 {
+        font-size: 20px;
     }
-    .main-location{
+
+    .main-location {
         padding: 5%;
         max-width: 480px;
     }
+
     input {
         font-size: 14px;
         width: 170px;
     }
+
     .pin {
-        width: 170px;
-    }
-    p{
-        width:400px;
+        width: 290px;
     }
     
+    
+    p {
+        width: 400px;
+    }
+
 }
+
 @media (max-width: 450px) {
-    html, body {
-    /* Убирает прокрутку по горизонтале, для мобильной версии */
-    overflow-x: hidden;
-}
-    .conteiner { 
+
+    html,
+    body {
+        /* Убирает прокрутку по горизонтале, для мобильной версии */
+        overflow-x: hidden;
+    }
+
+    .conteiner {
         display: block;
         justify-content: flex-start;
-        max-width:100%;
-        
+        max-width: 100%;
+
     }
+
     header {
         border: 1px inset blue;
         display: flex;
@@ -279,37 +332,49 @@ button {
         align-items: center;
         justify-content: center;
     }
-    h2{
-        font-size: 20px;  
+
+    h2 {
+        font-size: 20px;
     }
-    .main-location{
+
+    .main-location {
         max-width: 395px;
         display: block;
         align-items: center;
     }
+
     input {
         font-size: 14px;
         width: 200px;
     }
+
     .pin {
         width: 200px;
     }
-    p{
-        width:370px;
+    .numberTR::before {
+        content: "              8        7       6       5      4      3     2    1";
     }
-    
+    p {
+        width: 370px;
+    }
+
 }
+
 @media (max-width: 390px) {
-    html, body {
-    /* Убирает прокрутку по горизонтале, для мобильной версии */
-    overflow-x: hidden;
-}
-    .conteiner { 
+
+    html,
+    body {
+        /* Убирает прокрутку по горизонтале, для мобильной версии */
+        overflow-x: hidden;
+    }
+
+    .conteiner {
         display: block;
         justify-content: flex-start;
-        max-width:100%;
-        
+        max-width: 100%;
+
     }
+
     header {
         border: 1px inset blue;
         display: flex;
@@ -317,29 +382,37 @@ button {
         align-items: center;
         justify-content: center;
     }
-    h2{
-        font-size: 15px;  
+
+    h2 {
+        font-size: 15px;
     }
-    .main-location{
+
+    .main-location {
         max-width: 310px;
         display: block;
         align-items: center;
     }
+
     input {
         font-size: 14px;
         width: 150px;
     }
+
     .pin {
         width: 150px;
     }
-    p{
-        width:305px;
+
+    p {
+        width: 305px;
     }
-    
+
 }
+
 @media (max-width: 340px) {
-    html, body {
+
+    html,
+    body {
         /* Убирает прокрутку по горизонтале, для мобильной версии */
-        overflow-x:auto; 
+        overflow-x: auto;
     }
 }

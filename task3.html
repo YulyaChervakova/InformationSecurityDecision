@@ -5,7 +5,7 @@
     <!— Yandex.Metrika counter —> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(67847740, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/67847740" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!— /Yandex.Metrika counter —>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
-    <title>Document</title>
+    <title>ОИБ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalaize.css">
 
@@ -35,7 +35,7 @@
                     Хешируемое сообщение(ИСПОЛЬЗОВАТЬ ЗАГЛАВНЫЕ БУКВЫ)</span> <br><br>
 
                 <input id="surname" class='surname necessarily' type="text" size="20" maxlength="20"
-                    placeholder="Ввeсти Фамилию"  onkeyup="this.value = this.value.replace(/[0-9' ']/g,'')"><br><br><br>
+                    placeholder="Ввeсти Фамилию"  onkeyup="this.value = this.value.replace(/[^А-Я' ']/g,'')"><br><br><br>
                 <span class="span1" data-tooltip="p,q задания №2">Два простых числа из задания №2 </span><br>
                 <span class="span1">p: <input id="pInput" class='pInput necessarily' type="text" size="20" maxlength="2"
                         placeholder="Ввeсти простое число" onkeyup="this.value = this.value.replace(/[^\d]/g,'')"></span><br><br>
@@ -44,11 +44,11 @@
                 <br>
                 <br>
                 <p class="textP"> Найдем их произведение </p>
-                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" /></span></p>
+                <p><span class="span1">n: <input class="pin nOutput" id="nOutput" size="30" readonly /></span></p>
                 <button onclick="checkMultiplication();">Умножить!</button>
                 <p data-tooltip="Пример 8">Вектор инициализации H<sub>0</sub></p>
                 <input class="pin necessarily" id="vector" type="number" size="30" maxlength="3"
-                    placeholder="Выбираем случайным образом" onkeyup="this.value = this.value.replace(/[^\d]/g,'')">
+                    placeholder="Выбираем случайным образом" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');">
                 <p class="textP"> Фамилию <output class='famili'></output> представить последователь-ностью чисел по номерам букв в алфавите: <output
                         id="surname1"></output></p>
                 <a href="javascript:void(0)" onclick="showHide('block_id')">Скрыть/Показать таблицу</a><br /><br />
@@ -326,7 +326,7 @@
                     </table>
                 </div>
                 <button onclick="submitSurname();">Представить!</button><br><br>
-                <input class="pin submitSurname1" id="submitSurname1">
+                <input class="pin submitSurname1" id="submitSurname1" readonly>
                 <p class="textP">Используя формулу:H<sub>i</sub>=(H<sub>i-1</sub>+M)<sup>2</sup>mod n,<br>
                     получим хеш-образ сообщения <output class='famili'></output></p>
                 <button onclick="calculateImage();">Вычислить!</button><br><br>

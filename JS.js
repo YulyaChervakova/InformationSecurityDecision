@@ -181,7 +181,7 @@ function xorCalculate() {
     }
   }
 
-  outputText7.value = vivod;
+  outputText7.value = (`${vivod.slice(0,8)} ${vivod.slice(8,16)} ${vivod.slice(16,24)} ${vivod.slice(24,32)}`);
 }
 
 //List2
@@ -222,6 +222,7 @@ function checkMultiplication() {
 function eulerFunction() {
   var inputP = document.getElementById("pInput").value;
   var inputQ = document.getElementById("qInput").value;
+  var vivodFin = document.getElementById("vivodFin");
   var outputTextPhi = document.getElementsByClassName('phiOutput');
   var m = (parseInt(inputP) - 1) * (parseInt(inputQ) - 1);
   outputTextPhi[0].value = '';
@@ -230,6 +231,8 @@ function eulerFunction() {
     outputTextPhi[i].value = '';
     outputTextPhi[i].value = m;
   }
+  vivodFin.value ="";
+  vivodFin.value = m;
 }
 
 
@@ -536,6 +539,7 @@ function calculateImage(){
   var k = 0;
   var number = '';
   var number1 =inputH;
+  if(inputH<100){
   for (var i = 0 ; i<=inputSubmitSurname.length;i++){
     if (inputSubmitSurname[i] == ' '){
       number = ((inputSubmitSurname.slice(k, i)).trim());
@@ -551,5 +555,7 @@ function calculateImage(){
     outputH[i].value = '';
   }
   //hash.value = number1;
-  
+  }else{
+    alert('Выберите вектор H0,числом меньше 100, для более приятных вычислений :)');
+  }
 }
