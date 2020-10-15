@@ -40,7 +40,7 @@
                         букв из своих данных:
                         Фамилии Имени Отчества </b>(Исходные данные для зашифрования)<b>:</b><br>
                 </p>
-                <input id="name" class="necessarily" type="text" size="20" maxlength="8" placeholder="Ввод кириллицей" onkeyup="this.value = this.value.replace(/[^а-яА-я]/g,'');" >
+                <input id="name" class="necessarily" type="text" size="20" maxlength="8" placeholder="Ввод кириллицей" onkeyup="this.value = this.value.replace(/[^а-яА-я]/g,' ');" >
                 <br>
                 <p data-tooltip="Пример: АЛИНа пошла в лес собирать грибы "><b>Введите текст, состоящий из 32
                         символов.</b>(Ключ)<b>:</b><br>
@@ -317,7 +317,7 @@
                         </tr>
                         <tr>
                             <td> </td>
-                            <td>00010000</td>
+                            <td>00100000</td>
                         </tr>
                     </table>
                 </div>
